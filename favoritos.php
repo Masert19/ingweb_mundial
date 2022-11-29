@@ -2,29 +2,28 @@
 <html lang="en">
 
 <head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-    <title>Resultados</title>
+    <title>Favorito</title>
     <?php include("layout/head.php") ?>
 </head>
 
 <body>
     <?php
     include("layout/navbar.php");
-    Navbar("Resultados", "index.php");
+    Navbar("Favoritos", "index.php");
     ?>
     <?php
     include("queries/user_data.php");
-
+    if (!$USER) {
+        header("location:login.php");
+    }
+    echo "<h1>Partidos</h1>";
     echo "<div class='matches'>";
-    $query = "SELECT * FROM football_match  order by date;";
+    $query = "SELECT `match` as 'id',fm.date FROM team_match tm inner join football_match fm on fm.id = tm.match where team =" . $USER["favorite_team"] . " group by `match` order by fm.date;";
     $cursor = $con_bd->query($query);
     $matches = mysqli_fetch_all($cursor, MYSQLI_ASSOC);
 
     foreach ($matches as $match) {
-        $query = "SELECT team_match.*,team.code,team.name FROM team_match inner join team on team_match.team = team.id 
-        where `match`=" . $match["id"] ." order by id;";
+        $query = "SELECT team_match.*,team.code,team.name FROM team_match inner join team on team_match.team = team.id where `match`=" . $match["id"] . " order by id;";
         //echo $query;
         $cursor = $con_bd->query($query);
         $result = mysqli_fetch_all($cursor, MYSQLI_ASSOC);
@@ -34,6 +33,7 @@
             $contentEditable = "contentEditable";
         }
         echo "
+            
             <div class='match-container'>
             <div class='match-result'>
                 
@@ -55,34 +55,11 @@
             </div>
         ";
 
-
-
     }
     echo "</div>";
+
     ?>
-
     <?php include("assets/notifications.php") ?>
-    <script>
-        document.querySelectorAll(".result-score").forEach(score => {
-            score.addEventListener("input", (e) => {
-                let value = e.target.innerText
-
-                if (parseInt(value) || value === "0") {
-                    fetch(`http://localhost/php/semestral/queries/update_match_result.php?id=${e.target.dataset.id}&value=${e.target.innerText}`)
-                        .then(r => r.json())
-                        .then(r => {
-                            if (r.result == "success") {
-                                showNotification('success', 'Success!', 'Your request was completed successfully.')
-                            }
-                            else {
-                                showNotification('error', 'Failed operation', r.result);
-                            }
-                        })
-                }
-
-            })
-        })
-    </script>
 </body>
 
 </html>

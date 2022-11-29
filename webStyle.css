@@ -13,11 +13,123 @@ body {
   font-size: 45px;
   color: #8d1c3d;
 }
+
+/*una locura */
+.dashButton1 {
+  display: flex;
+  margin: 10px;
+  height: 153px;
+  width: 258px;
+  background-color: #8d1c3d;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+}
+.dashButton2 {
+  display: flex;
+  margin: 10px;
+  height: 153px;
+  width: 258px;
+  background-color: #8d1c3d;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+}
+.dashButton3 {
+  display: flex;
+  margin: 10px;
+  height: 153px;
+  width: 258px;
+  background-color: #8d1c3d;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+}
+.dashButton4 {
+  display: flex;
+  margin: 10px;
+  height: 153px;
+  width: 258px;
+  background-color: #8d1c3d;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+}
+.dashButton5 {
+  display: flex;
+  margin: 10px;
+  height: 153px;
+  width: 258px;
+  background-color: #8d1c3d;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashButton1:hover {
+  background: linear-gradient(rgba(57, 57, 57, 0.7), rgba(57, 57, 57, 0.7)),
+    url("assets/resultado1.jpg") no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: fadeIn 1s;
+}
+.dashButton2:hover {
+  background: linear-gradient(rgba(57, 57, 57, 0.7), rgba(57, 57, 57, 0.7)),
+    url("assets/Qatar.jpg") no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: fadeIn 1s;
+}
+.dashButton3:hover {
+  background: linear-gradient(rgba(57, 57, 57, 0.7), rgba(57, 57, 57, 0.7)),
+    url("assets/Class.jpg") no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: fadeIn 1s;
+}
+.dashButton4:hover {
+  background: linear-gradient(rgba(57, 57, 57, 0.7), rgba(57, 57, 57, 0.7)),
+    url("assets/Tabla.jpg") no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: fadeIn 1s;
+}
+.dashButton5:hover {
+  background: linear-gradient(rgba(57, 57, 57, 0.7), rgba(57, 57, 57, 0.7)),
+    url("assets/Favorito.jpg") no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 3;
+  }
+}
+
+/*Hasta aquí está loco */
+
 .top {
   display: flex;
   font-family: "Inter";
   flex-wrap: nowrap;
   justify-content: space-between;
+  align-items: center;
+}
+.bottom {
+  display: flex;
+  font-family: "Inter";
+  color: #ebebeb;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
 }
 
@@ -109,8 +221,8 @@ form {
   align-items: center;
 }
 .flag {
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -124,9 +236,11 @@ form {
 }
 .result-score {
   font-weight: 600;
+  min-width: 20px;
+  text-align: center;
 }
 .match-footer {
-  font-size: 0.7em;
+  font-size: 0.8em;
   text-align: center;
 }
 
@@ -157,23 +271,76 @@ form {
 #arrow {
   width: 30px;
 }
+
+#notification-container {
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  font-size: 0.7em;
+  max-width: 200px;
+  right: 10px;
+}
+.notification {
+  background: black;
+  color: white;
+  padding: 7px 15px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 5px black;
+}
+.notification.notification-success {
+  background: green;
+}
+
+.notification.notification-error {
+  background: rgb(150, 0, 0);
+}
+.notification-title {
+  font-weight: 600;
+  font-size: 1.6em !important;
+  margin-bottom: 10px;
+}
+.notification-close {
+  border: none;
+  background: none;
+  width: 100%;
+  color: white;
+  padding: 7px 7px;
+  cursor: pointer;
+}
 .teamsDad {
-	display: flex;
-	flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
 }
 .teamsSon {
-	flex: 1 0 20%; /* explanation below */
-	margin: 5px;
-	height: 100px;
-	text-align-last: center;
+  flex: 1 0 20%; /* explanation below */
+
+  text-align-last: center;
 }
 #linkfont {
-	font-family: 'Inter';
-	text-decoration: none;
-	color: #252525;
-	font-weight: 500;
+  font-family: "Inter";
+  text-decoration: none;
+  color: #252525;
+  font-weight: 500;
+  vertical-align: text-top;
 }
 
 #starImage {
-	vertical-align: middle;
+  vertical-align: middle;
+}
+
+#starImage:hover {
+  cursor: pointer;
+}
+
+#linkDash {
+  text-decoration: none;
+  color: #ebebeb;
+}
+
+h1 {
+  font-family: "Inter";
+}
+.favorite-selector {
+  color: black !important;
 }

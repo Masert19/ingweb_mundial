@@ -4,6 +4,9 @@
 <html lang="en">
 
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
     <title>Resultados</title>
     <?php include("layout/head.php") ?>
 </head>
@@ -11,6 +14,7 @@
 <body>
 
     <?php
+
     include('queries/dbcon.php');
 
     echo "<div class='matches'>";
@@ -18,7 +22,8 @@
     $cursor = $con_bd->query($query);
     $matches = mysqli_fetch_all($cursor, MYSQLI_ASSOC);
     foreach ($matches as $match) {
-        $query = "SELECT team_match.*,team.code,team.name FROM team_match inner join team on team_match.team = team.id where `match`=" . $match["id"] . " order by id;";
+        $query = "SELECT team_match.*,team.code,team.name FROM team_match inner join team on team_match.team = team.id 
+        where `match`=" . $match["id"] ." order by id;";
         //echo $query;
         $cursor = $con_bd->query($query);
         $result = mysqli_fetch_all($cursor, MYSQLI_ASSOC);
@@ -40,15 +45,16 @@
         </div>
     </div>
     <div class='match-footer'>
-    " . $match["date"] . "(UTC-5)
+    " .$match["date"] . "(UTC-5)
     </div>
     </div>
     
     ";
 
+
+
     }
     echo "</div>";
-
     ?>
 
 </body>

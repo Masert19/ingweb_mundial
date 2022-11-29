@@ -84,6 +84,8 @@ form {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
+  font-family: 'Inter', sans-serif;
+
 }
 .match-container {
   border: 1px solid gray;
@@ -92,6 +94,11 @@ form {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  animation: normal ease-in-out;
+}
+.match-container:hover{
+  transform:translateY(3px);
 }
 .match-result {
   display: flex;
@@ -118,4 +125,5 @@ form {
 }
 .match-footer {
   font-size: 0.7em;
+  text-align: center;
 }
